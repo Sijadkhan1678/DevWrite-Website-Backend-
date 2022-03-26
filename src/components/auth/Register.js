@@ -22,10 +22,10 @@ const onSubmit = e =>{
 }
  return(
    
-       <div className='backgroundimg'>
+       
        
     <div className='form-container'>
-    <h1 className='text-light'>Create Account</h1>
+    <h2>Create Account</h2>
     <form onSubmit={onSubmit} >
         <div className="form-group">
             <label htmlFor="name">Name</label>
@@ -46,7 +46,7 @@ const onSubmit = e =>{
         <input type="submit" value="Register" className="btn btn-success block" />
     </form>
 </div>
-</div>
+
 
  )
 

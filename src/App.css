@@ -122,7 +122,7 @@ h3 {
 
 /* background image for sign up form */
 
-.backgroundimg{
+.signupimg{
 background-image: url('./images/SignUp.jpg');
 background-repeat: no-repeat;
 background-size: 100%;
@@ -132,6 +132,17 @@ width: 100%;
 
 
 }
+.loginimg{
+background-image: url('./images/login.jpg');
+background-repeat: no-repeat;
+background-size: 100%;
+
+width: 100%;
+
+
+
+}
+ /* background images */
 
 .badge {
   font-size: 0.8rem;

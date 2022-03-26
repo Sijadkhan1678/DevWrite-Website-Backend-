@@ -20,8 +20,9 @@ const onSubmit = e =>{
 }
  return(
 
+    <div>
     <div className='form-container'>
-    <h1>Login Form</h1>
+    <h2>Login Form</h2>
     <form onSubmit={onSubmit} >
     
               <div className="form-group">
@@ -33,11 +34,12 @@ const onSubmit = e =>{
             <input type="password" name="password" value={password} placeholder='Password' onChange={onChange} minLength="6"/>
         </div>
         
-         <input type="submit" value="Register" className="btn btn-primary block" />
+         <input type="submit" value="Login" className="btn btn-primary block" />
     </form>
+</div>
 </div>
  )
 
 }
 
-export default Register;
+export default Login;
