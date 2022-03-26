@@ -1,7 +1,17 @@
-import React,{ useState} from 'react';
+import React,{ useState,useEffect} from 'react';
+import {connect} from 'react-redux';
+import propTypes from 'prop-types'
+import {Register} from '../../actions/authActions'
 
+const Register = ({isAuthenticated,Register}) =>{
 
-const Register = () =>{
+ useEffect(()=>{
+      if(isAuthenticated){
+      
+      props.history.push('/profile')
+      }
+ 
+ },{isAuthenticated}) 
 
  const [field,setField] = useState({
 
@@ -14,11 +24,29 @@ const Register = () =>{
 
    const {name,email,password,password2}= field 
 
-const onChange = e =>  setField({...field,[e.target.name]: e.target.value})
+   const onChange = e =>  setField({...field,[e.target.name]: e.target.value})
 
-const onSubmit = e =>{
+   const onSubmit = e =>{
 
     e.preventDefault();
+    
+    if (name==='' || email==='' passwored===''){
+    
+    
+    } if(password !== password2){
+       
+    
+    } else{
+    
+    const formData ={
+         name,
+         email,
+         password 
+    }
+        
+      Register(formData)
+    
+    }
 }
  return(
    
@@ -49,7 +77,19 @@ const onSubmit = e =>{
 
 
  )
+ 
+ Register.propTypes={
+ 
+   Register: propTypes.func.isRequired,
+   isAuthenticaed: propTypes.bool.isRequired
+ }
+const mapStateToProps = state => ({
+  
+     isAuthenticated: state.isAuthenticated
+
+})
+
 
 }
 
-export default Register;
+export default connect(mapStateToProps,{Register}) (Register);
