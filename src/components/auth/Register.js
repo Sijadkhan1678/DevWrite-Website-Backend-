@@ -30,7 +30,7 @@ const Register = ({isAuthenticated,Register}) =>{
 
     e.preventDefault();
     
-    if (name==='' || email==='' passwored===''){
+    if (name==='' || email==='' || password===''){
     
     
     } if(password !== password2){
@@ -78,18 +78,19 @@ const Register = ({isAuthenticated,Register}) =>{
 
  )
  
- Register.propTypes={
- 
-   Register: propTypes.func.isRequired,
-   isAuthenticaed: propTypes.bool.isRequired
- }
-const mapStateToProps = state => ({
-  
-     isAuthenticated: state.isAuthenticated
-
-})
 
 
 }
+Register.propTypes={
+ 
+    Register: propTypes.func.isRequired,
+    isAuthenticaed: propTypes.bool.isRequired
+  }
+ const mapStateToProps = state => ({
+   
+      isAuthenticated: state.isAuthenticated
+ 
+ })
+ 
 
 export default connect(mapStateToProps,{Register}) (Register);
