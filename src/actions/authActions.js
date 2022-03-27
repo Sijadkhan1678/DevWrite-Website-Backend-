@@ -85,10 +85,11 @@ export const Login = FormData = async dispatch => {
  
  export const logOut = () =>  {
  
-    return{
+    return {
+      
     type: LOG_OUT
     
-           }
+      }
  
  }
    

@@ -89,7 +89,7 @@ Register.propTypes={
   }
  const mapStateToProps = state => ({
    
-      isAuthenticated: state.isAuthenticated
+      isAuthenticated: state.auth.isAuthenticated
  
  })
  

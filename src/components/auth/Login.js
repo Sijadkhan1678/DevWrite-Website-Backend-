@@ -1,6 +1,20 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react';
+import {connect} from 'react-redux';
+import propTypes from 'prop-types'
+import {login,clearErrors} from '../../actions/authActions';
+import {setAlert} from '../../actions/alertActions';
 
-const Login = () =>{
+const Login = ({auth:{isAuthenticated,error},login,setAlert,props}) => {
+  
+useEffect(()=>{
+   if(isAuthenticated){
+     props.history.push('/');
+   }
+   if(error=== 'user with this email does not exist'){
+     setAlert(error,'danger');
+     clearErrors();
+   }
+})
 
  const [field,setField] = useState({
 
@@ -15,8 +29,20 @@ const Login = () =>{
 const onChange = e =>  setField({...field,[e.target.name]: e.target.value})
 
 const onSubmit = e =>{
+  e.preventDefault()
+  
+  if( email=== '' || password == ''){
+    setAlert('please fill the login form','danger')
+  } else {
+    
+    const formData = new formData({
+      email,
+      password
+    })
+    login(formData);
+  }
 
-    e.preventDefault();
+    
 }
  return(
 
@@ -42,4 +68,15 @@ const onSubmit = e =>{
 
 }
 
-export default Login;
+Login.propTypes = {
+  
+  login: propTypes.func.isRequired,
+  setAlert: propTypes.func.isRequired,
+  isAuthenticated : propTypes.arr.isRequired
+}
+const mapStateToProps = state => ({
+  auth : state.auth,
+  
+})
+
+export default connect(mapStateToProps,{login,setAlert}) (Login);

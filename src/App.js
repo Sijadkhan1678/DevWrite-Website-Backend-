@@ -9,7 +9,7 @@ import Home from './components/pages/Home'
 import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-
+import Alert from './components/layout/Alert'
 
 const App= ()=> {
   useEffect(() => {
@@ -23,6 +23,7 @@ const App= ()=> {
     <Fragment>
       
       <Navbar/>
+      <Alert />
       
       <div className='container'>
       <Switch>
