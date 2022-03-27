@@ -14,7 +14,8 @@ useEffect(()=>{
      setAlert(error,'danger');
      clearErrors();
    }
-})
+   // eslint-disable-next-line
+},[isAuthenticated,error,props.history])
 
  const [field,setField] = useState({
 
