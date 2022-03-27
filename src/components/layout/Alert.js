@@ -14,10 +14,10 @@ alerts.length > 0 &&
 }
 
 Alert.propTypes= {
-  alerts: propTypes.arr.isRequired
+  alerts: propTypes.array.isRequired
 }
 
-const mapStateToProps = state = ({
+const mapStateToProps = state => ({
   alerts: state.alerts
 })
 

@@ -17,6 +17,8 @@ export default  (state=initialState,action) => {
             ...state.filter(alert => alert.id !== action.payload)
         }
         
+        default: 
+        return state
 
     }
     

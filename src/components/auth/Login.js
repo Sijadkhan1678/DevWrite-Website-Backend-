@@ -32,14 +32,15 @@ const onChange = e =>  setField({...field,[e.target.name]: e.target.value})
 const onSubmit = e =>{
   e.preventDefault()
   
-  if( email=== '' || password == ''){
+  if( email=== '' || password === ''){
     setAlert('please fill the login form','danger')
   } else {
     
-    const formData = new formData({
+    const formData = {
       email,
       password
-    })
+    }
+    
     login(formData);
   }
 
@@ -73,7 +74,7 @@ Login.propTypes = {
   
   login: propTypes.func.isRequired,
   setAlert: propTypes.func.isRequired,
-  isAuthenticated : propTypes.arr.isRequired
+  auth : propTypes.object
 }
 const mapStateToProps = state => ({
   auth : state.auth,

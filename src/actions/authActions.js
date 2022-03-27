@@ -18,20 +18,20 @@ export const register = FormData = async dispatch => {
         
       })
       
-      loadUser()
+      loadUser();
       
     
   } catch (err) {
     dispatch({
       type: REGISTER_FAIL,
-      payload: err.response.msg
+      payload: err.response.data.msg
     })
   }
   
 }
 
 
-export const Login = FormData = async dispatch => {
+export const login = FormData = async dispatch => {
   try {
     const config = {
       
@@ -52,7 +52,7 @@ export const Login = FormData = async dispatch => {
   } catch (err) {
     dispatch({
       type: LOGIN_FAIL,
-      payload: err.response.msg
+      payload: err.response.data.msg
     })
   }
   
@@ -76,7 +76,7 @@ export const Login = FormData = async dispatch => {
 
      dispatch({
      type: AUTH_ERROR,
-     payload: err.response.msg
+     payload: err.response.data.msg
    } )
    
    

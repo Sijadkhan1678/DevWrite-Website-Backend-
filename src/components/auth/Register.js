@@ -1,18 +1,24 @@
 import React,{ useState,useEffect} from 'react';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types'
-import {register} from '../../actions/authActions'
+import {register,clearErrors} from '../../actions/authActions'
+import {setAlert} from '../../actions/alertActions';
 
-const Register = ({isAuthenticated,register}) =>{
+const Register = ({auth:{isAuthenticated,error},register,props}) =>{
 
- useEffect(()=>{
-      if(isAuthenticated){
-      
-      props.history.push('/profile')
-      }
+   useEffect(()=>{
+   
+   if(isAuthenticated){
+     props.history.push('/');
+   }
+   if(error=== 'user with this email already exist'){
+     setAlert(error,'danger');
+     clearErrors();
+   }
+   // eslint-disable-next-line
+},[isAuthenticated,error,props.history])
+
  
- },{isAuthenticated}) 
-
  const [field,setField] = useState({
 
         name: '',
@@ -82,16 +88,18 @@ const Register = ({isAuthenticated,register}) =>{
 
 }
 
-Register.propTypes={
- 
-    Register: propTypes.func.isRequired,
-    isAuthenticaed: propTypes.bool.isRequired
-  }
+Register.propTypes = {
+  
+  register: propTypes.func.isRequired,
+  setAlert: propTypes.func.isRequired,
+  auth : propTypes.object.isRequired
+  
+}
  const mapStateToProps = state => ({
    
-      isAuthenticated: state.auth.isAuthenticated
+      auth: state.auth
  
  })
  
 
-export default connect(mapStateToProps,{Register})(Register);
+export default connect(mapStateToProps,{register,setAlert}) (Register);

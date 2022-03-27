@@ -3,10 +3,12 @@ import {combineReducers} from 'redux';
 import authReducer from './authReducer';
 import alertReducer from './alertReducer';
 
-export const combineReducer= combineReducers(
+  const combineReducer= combineReducers(
 
 {
        auth : authReducer,
        alerts: alertReducer
 }
 )
+
+export default combineReducer;
