@@ -1,9 +1,9 @@
 import React,{ useState,useEffect} from 'react';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types'
-import {Register} from '../../actions/authActions'
+import {register} from '../../actions/authActions'
 
-const Register = ({isAuthenticated,Register}) =>{
+const Register = ({isAuthenticated,register}) =>{
 
  useEffect(()=>{
       if(isAuthenticated){
@@ -30,7 +30,7 @@ const Register = ({isAuthenticated,Register}) =>{
 
     e.preventDefault();
     
-    if (name==='' || email==='' passwored===''){
+    if (name==='' || email==='' || password===''){
     
     
     } if(password !== password2){
@@ -44,7 +44,7 @@ const Register = ({isAuthenticated,Register}) =>{
          password 
     }
         
-      Register(formData)
+      register(formData)
     
     }
 }
@@ -78,18 +78,20 @@ const Register = ({isAuthenticated,Register}) =>{
 
  )
  
- Register.propTypes={
  
-   Register: propTypes.func.isRequired,
-   isAuthenticaed: propTypes.bool.isRequired
- }
-const mapStateToProps = state => ({
-  
-     isAuthenticated: state.isAuthenticated
-
-})
-
 
 }
 
-export default connect(mapStateToProps,{Register}) (Register);
+Register.propTypes={
+ 
+    Register: propTypes.func.isRequired,
+    isAuthenticaed: propTypes.bool.isRequired
+  }
+ const mapStateToProps = state => ({
+   
+      isAuthenticated: state.isAuthenticated
+ 
+ })
+ 
+
+export default connect(mapStateToProps,{Register})(Register);

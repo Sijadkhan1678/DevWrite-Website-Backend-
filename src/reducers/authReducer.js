@@ -1,4 +1,11 @@
-import {REGISTER_SUCCESS,REGISTER_FAIL,LOGIN_SUCCESS,LOGIN_FAIL,USER_LOADED,LOG_OUT,AUTH_ERROR} from '../actions/types'
+import {REGISTER_SUCCESS,
+        REGISTER_FAIL,
+        LOGIN_SUCCESS,
+        LOGIN_FAIL
+    ,   USER_LOADED,
+        LOG_OUT,AUTH_ERROR,
+        CLEAR_ERRORS
+    } from '../actions/types'
 
 const initialState= {
     
@@ -25,7 +32,7 @@ export default  (state=initialState,action)=>{
            
         }
         case REGISTER_SUCCESS:
-        case LOGIN_SUCESS:
+        case LOGIN_SUCCESS:
         
         token: localStorage.setItem('token',action.payload.token);
         return{
@@ -53,9 +60,10 @@ export default  (state=initialState,action)=>{
         }
         
         case CLEAR_ERRORS:
-        return{
-        ...state,
-        error: null
+
+        return  {
+         ...state,
+         error: null
         
         }
         

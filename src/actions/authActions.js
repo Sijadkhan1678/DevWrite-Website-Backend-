@@ -2,7 +2,7 @@ import {REGISTER_SUCCESS,REGISTER_FAIL,LOGIN_SUCCESS,LOGIN_FAIL,USER_LOADED,AUTH
 import setAuthToken from '../utils/setAuthToken';
 import axios from 'axios'
 
-export const Register = FormData = async dispatch => {
+export const register = FormData = async dispatch => {
   try {
     const config = {
       
@@ -81,15 +81,22 @@ export const Login = FormData = async dispatch => {
    
    
    
- }
+ } }
  
- export const logOut= () =>  {type: LOG_OUT}
+ export const logOut = () =>  {
+ 
+    return{
+    type: LOG_OUT
+    
+           }
+ 
+ }
    
  
  
   /* Clear Errors */
   
-  export const clearErrors = () =>{
+  export const clearErrors = async () =>{
   
   return{
   

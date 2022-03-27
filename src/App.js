@@ -3,7 +3,7 @@ import './App.css';
 import {BrowserRouter as Router ,Route,Switch}  from 'react-router-dom';
 import 'materialize-css/dist/css/materialize.min.css';
 import M from 'materialize-css/dist/js/materialize.min.js';
-
+import store from './store'
 import Home from './components/pages/Home'
 import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
