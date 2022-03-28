@@ -2,7 +2,8 @@ import {REGISTER_SUCCESS,REGISTER_FAIL,LOGIN_SUCCESS,LOGIN_FAIL,USER_LOADED,AUTH
 import setAuthToken from '../utils/setAuthToken';
 import axios from 'axios'
 
-export const register = FormData = async dispatch => {
+export const register = formData => async dispatch => {
+
   try {
     const config = {
       
@@ -11,7 +12,7 @@ export const register = FormData = async dispatch => {
       }
       
     }
-      const res = await axios.post('/api/register',FormData,config);
+      const res = await axios.post('/api/register',formData,config);
       dispatch({
         type:REGISTER_SUCCESS,
         payload: res.data
@@ -22,6 +23,7 @@ export const register = FormData = async dispatch => {
       
     
   } catch (err) {
+
     dispatch({
       type: REGISTER_FAIL,
       payload: err.response.data.msg
@@ -31,7 +33,7 @@ export const register = FormData = async dispatch => {
 }
 
 
-export const login = FormData = async dispatch => {
+export const login = formData => async dispatch => {
   try {
     const config = {
       
@@ -40,7 +42,8 @@ export const login = FormData = async dispatch => {
       }
       
     }
-      const res = await axios.post('/api/auth',FormData,config);
+      const res = await axios.post('/api/auth',formData,config);
+      console.log(res.data)
       dispatch({
         type:LOGIN_SUCCESS,
         payload: res.data
@@ -50,6 +53,7 @@ export const login = FormData = async dispatch => {
       loadUser()
     
   } catch (err) {
+    console.log(err.response.data.msg)
     dispatch({
       type: LOGIN_FAIL,
       payload: err.response.data.msg
@@ -67,6 +71,7 @@ export const login = FormData = async dispatch => {
    try {
     
     const res = await axios.get('/api/auth')
+    console.log(res.data)
     dispatch({
       type: USER_LOADED,
       payload: res.data

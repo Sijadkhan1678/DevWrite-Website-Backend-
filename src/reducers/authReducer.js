@@ -5,7 +5,7 @@ import {REGISTER_SUCCESS,
     ,   USER_LOADED,
         LOG_OUT,AUTH_ERROR,
         CLEAR_ERRORS
-    } from '../actions/types'
+    } from './../actions/types'
 
 const initialState= {
     

@@ -4,18 +4,19 @@ import propTypes from 'prop-types'
 import {login,clearErrors} from '../../actions/authActions';
 import {setAlert} from '../../actions/alertActions';
 
-const Login = ({auth:{isAuthenticated,error},login,setAlert,props}) => {
+const Login = ({auth:{isAuthenticated,error},login,setAlert,history}) => {
   
 useEffect(()=>{
    if(isAuthenticated){
-     props.history.push('/');
+     history.push('/home');
    }
    if(error=== 'user with this email does not exist'){
+
      setAlert(error,'danger');
      clearErrors();
    }
    // eslint-disable-next-line
-},[isAuthenticated,error,props.history])
+},[isAuthenticated,error,history])
 
  const [field,setField] = useState({
 
@@ -25,7 +26,7 @@ useEffect(()=>{
 
     });
 
-   const {email,password}= field 
+   const {email,password} = field 
 
 const onChange = e =>  setField({...field,[e.target.name]: e.target.value})
 
@@ -36,12 +37,8 @@ const onSubmit = e =>{
     setAlert('please fill the login form','danger')
   } else {
     
-    const formData = {
-      email,
-      password
-    }
     
-    login(formData);
+    login({email,password});
   }
 
     

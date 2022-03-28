@@ -8,7 +8,7 @@ const Navbar = () =>{
 
         <nav className="purple accent-1 accent-4">
         <div className="nav-wrapper">
-          <Link  className="brand-logo py-2">DevWrite</Link>
+          <Link to='/Home'  className="brand-logo py-2">DevWrite</Link>
           <ul id="nav-mobile" className="right hide-on-med-and-down">
 
             <li><Link to='/Home'> Home </Link></li>

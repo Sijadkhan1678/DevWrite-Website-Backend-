@@ -27,7 +27,7 @@ const App= ()=> {
       
       <div className='container'>
       <Switch>
-      <Route  exact path='/Home'      component={Home}/>
+      <Route  exact path='/home'      component={Home}/>
       <Route  exact path='/login'     component={Login}/>
       <Route  exact path='/register'  component={Register}/>
       

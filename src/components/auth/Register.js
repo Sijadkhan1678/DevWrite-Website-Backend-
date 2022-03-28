@@ -4,19 +4,19 @@ import propTypes from 'prop-types'
 import {register,clearErrors} from '../../actions/authActions'
 import {setAlert} from '../../actions/alertActions';
 
-const Register = ({auth:{isAuthenticated,error},register,props}) =>{
+const Register = ({auth:{isAuthenticated,error},register,history}) =>{
 
    useEffect(()=>{
    
    if(isAuthenticated){
-     props.history.push('/');
+    history.push('/home');
    }
-   if(error=== 'user with this email already exist'){
+   if(error === 'user with this email already exist'){
      setAlert(error,'danger');
      clearErrors();
    }
    // eslint-disable-next-line
-},[isAuthenticated,error,props.history])
+},[isAuthenticated,error,history])
 
  
  const [field,setField] = useState({
