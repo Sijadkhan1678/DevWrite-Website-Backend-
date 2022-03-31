@@ -1,49 +1,69 @@
-
-
-import React, { Fragment } from 'react'
-
-const Profile = () => {
- return ( 
-   <Fragment>
-     <div className='row'>
-     <div class="col s12 m8 offset-m2 l6 offset-l3">
-        <div class="card-panel grey lighten-5 z-depth-1">
-          <div class="row valign-wrapper">
-            <div class="col s2">
-              <img src="images/yuna.jpg" alt="" class="circle responsive-img"/> 
-            </div>
-            <div class="col s10">
-              <span class="black-text">
-                This is a square image. Add the "circle" class to it to make it appear circular.
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-  </div>
-        /* social */
+ import React, { Fragment} from 'react';
+ import avatar from '../'
+ import {connect} from 'react-redux'
+ import Preloader from '../layout/Preloader';
+ 
+ const Profile = ({profile,articles,auth}) => {
+   const {isAuthenticated,user}=auth
+   
+   const {_id,photo,name,skills,bio,facebook,twitter,github,instagram} = profile
+   
+   return ( 
+    
+     <Fragment>
+     <div classNam='card grid-2'>
+     <div classNam= 'all-center'>
+     
+  <img src={photo ? photo:avatar} alt="Profile" className="round-img"/>
+   <h3>{name}</h3>
+   
+{isAuthenticated && _id === user_id   &&( <Link to='/profileform' className='btn btn-dark my-1' >Edit Profile</Link>) }
+     </div>
+     <div>
+  { bio && (
+     <Fragment>
+        <h2>Bio</h2>
+        <p>{bio}</p>
+        </Fragment>
         
-        <div className='row'>
-          <div className='align-center'>
-        <di className='col center-align s2'>instagram</di>
-        <di className='col s2'>facebook</di>
-        <di className='col s2'>facebook</di>
-        </div>
-        </div>
-
-          /* article*/
-   <div className='divider'>
-     <div className='section'>
-   <h4 className='center-align'>Articles</h4>
+   ) }
+  
+     </div>
+     
+     </div>
+     
+     <div className="user-card badge-card">
+                    
+ <div className="badge badge-danger">
+ {facebook &&(
+   <a href={facebook}> <i className='material-icons'> </i></a>
+ )}
+ </div>
+<div className="badge badge-success">
+ {twitter &&(
+   <a href={twitter}> <i className='material-icons'> </i></a>
+ )}
+</div>
+ <div className="badge badge-light">
+  {github &&(
+   <a href={github}> <i className='material-icons'> </i></a>
+ )}
+ </div>
+<div className="badge badge-dark">
+ {instagram &&(
+   <a href={instagram}> <i className='material-icons'> </i></a>
+ )}
+</div>
+  </div>
+     
+     
+     </Fragment>
+     )
    
-   
-       </div>
-         </div>
-
-   
-   </Fragment>
-   
- )
-}
-
-export default Profile;
+ }
+ 
+ const mapStateToProps = state => ({
+   profile: state.profile,
+   articles: state.profileArticle
+ })
+ export default connect(mapStateToProps) (Profile);
