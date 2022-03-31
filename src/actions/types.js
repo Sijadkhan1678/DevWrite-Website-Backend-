@@ -15,3 +15,27 @@
   
  export const  SET_ALERT = 'SET_ALERT';
  export const  REMOVE_ALERT= 'REMOVE_ALERT'; 
+ 
+ /* profile types */
+ 
+ export const GET_PROFILE= 'GET_PROFILE'
+ export const UPDATE_PROFILE = 'UPDATE_PROFILE'
+ 
+ /* Article Types */
+
+export const POST_ARTICLE = 'POST_ARTICLE';
+export const GET_ARTICLES = 'GET_ARTICLES';
+export const GET_ARTICLE = 'GET_ARTICLE';
+export const UPDATE_ARTICLE = 'UPDATE_ARTICLE';
+export const DELETE_ARTICLE = 'DELETE_ARTICLE';
+export const SET_CURRENT = 'SET_CURRENT';
+export const CLEAR_CURRENT = 'CLEAR_CURRENT';
+/* TYPES for COMMENT */
+
+export const POST_COMMENT = 'POST_COMMENT';
+export const DELETE_COMMENT = 'DELETE_COMMENT';
+
+/* TYPES for LIKE */
+
+export const LIKE_ARTICKE = 'LIKE_ARTICLE';
+export const UNLIKE_ARTICLE = 'UNLIKE_ARTICLE';
