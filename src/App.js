@@ -12,6 +12,7 @@ import Register from './components/auth/Register';
 import Alert from './components/layout/Alert'
 import Profileform from './components/profile/Profileform';
 import Profile  from './components/profile/Profile'
+import ArticleItem from './components/profile/ArticleItem';
 
 const App= ()=> {
   useEffect(() => {
@@ -34,7 +35,7 @@ const App= ()=> {
       <Route  exact path='/register'  component={Register}/>
       <Route exact path='/profileform'  component={Profileform}/>
       <Route exact path='/profile'  component={Profile}/>
-      
+      <Route exact path='/article'   component = {ArticleItem} />
       </Switch>
         
        </div>
