@@ -4,7 +4,7 @@ import { GET_ARTICLES,GET_ARTICLE,
          DELETE_COMMENT,LIKE_ARTICLE,
          UNLIKE_ARTICLE,COMMENT_ERROR,
          SET_CURRENT,CLEAR_CURRENT,
-         LOADING
+         LOADING, ARTICLE_ERROR
          
 } from './types';
 
@@ -33,7 +33,7 @@ export const  getArticles = () => async  dispatch => {
   
 }
 
-export const getArticle = (id,) => async dispatch => {
+export const getArticle = (id) => async dispatch => {
       
       try {
         
@@ -117,7 +117,7 @@ export const updateArticle = (article,id) => async dispatch => {
 export const setCurrent= article => {
   return {
     type : SET_CURRENT,
-    payload: articles
+    payload: article
   }
 }
 
@@ -137,7 +137,7 @@ export const deleteArticle = id => async dispatch => {
 
     dispatch({
       type: DELETE_ARTICLE,
-      payload: _id
+      payload: id
     })
   }
 

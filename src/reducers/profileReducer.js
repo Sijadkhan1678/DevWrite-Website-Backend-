@@ -1,8 +1,8 @@
 import {GET_PROFILE,UPDATE_PROFILE,SET_CURRENT,CLEAR_CURRENT} 
- from '../actions/profile';
+ from '../actions/types';
 
 const intialState = {
-    Profile: null,
+    profile: null,
     ProfileArticle : null,
     error : null,
     current_profile : null

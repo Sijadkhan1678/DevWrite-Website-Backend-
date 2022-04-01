@@ -5,7 +5,7 @@ import {  GET_ARTICLES, GET_ARTICLE,
           UNLIKE_ARTICLE, COMMENT_ERROR,
           LOADING, SET_CURRENT,CLEAR_CURRENT
 
-} from '../actions/articleActions';
+} from '../actions/types';
 
 const initialState = {
      articles: null,
@@ -67,7 +67,7 @@ export default  (state=initialState,action) =>{
     case DELETE_COMMENT:
           return {
             ...state,
-            article : {...state.post,comments:state.article.comments.map(Comment=> comment.id !== action.payload )
+            article : {...state.post,comments:state.article.comments.map(comment=> comment.id !== action.payload )
             }
           }
           

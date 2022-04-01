@@ -1,7 +1,10 @@
+
+
  import React, { Fragment} from 'react';
- import avatar from '../'
+ //import avatar from '../'
  import {connect} from 'react-redux'
- import Preloader from '../layout/Preloader';
+ import  {Link} from 'react-router-dom'
+ 
  
  const Profile = ({profile,articles,auth}) => {
    const {isAuthenticated,user}=auth
@@ -17,7 +20,7 @@
   <img src={photo ? photo:avatar} alt="Profile" className="round-img"/>
    <h3>{name}</h3>
    
-{isAuthenticated && _id === user_id   &&( <Link to='/profileform' className='btn btn-dark my-1' >Edit Profile</Link>) }
+{isAuthenticated && _id === user._id   &&( <Link to='/profileform' className='btn btn-dark my-1' >Edit Profile</Link>) }
      </div>
      <div>
   { bio && (
