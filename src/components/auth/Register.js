@@ -38,9 +38,11 @@ const Register = ({auth:{isAuthenticated,error},register,history}) =>{
     
     if (name==='' || email==='' || password===''){
     
+    setAlert('please enter all field','danger')
     
     } if(password !== password2){
        
+       setAlert('password and confirm password does not match','danger');
     
     } else{
     

@@ -15,7 +15,7 @@ useEffect(()=>{
 
   getArticle(match.params._id);
   
-},[])
+},[article])
   
     return (
       <div className='card-panel'>
@@ -42,11 +42,12 @@ useEffect(()=>{
     </pre>           
                   
     <CommentForm id={_id}/>
-    comments.map(comment => <CommentItem key={comment._id} comment={comment} /> )
+    comments.map(comment => <CommentItem key={comment._id} articleId={_id} comment={comment} /> )
       </div>
     );
   
 }
+
 Article.propTypes= {
   article: propTypes.object.isRequired,
   getArticle: propTypes.func.isRequired

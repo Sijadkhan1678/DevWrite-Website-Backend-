@@ -1,15 +1,18 @@
 
-import React from 'react';
+import React,{Fragment} from 'react';
+import Articles from '../articles/articles'
 
 const Home = () =>{
 
    return (
        
-       <div>
+       <Fragment>
        
+       <Articles />
        <h1>Home component</h1>
        
-       </div>
+       
+       </Fragment>
       
    
    )

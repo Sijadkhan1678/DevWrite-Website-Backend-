@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import { unComment } from '../../actions/articleActions';
 
 
-const CommentItem = ({comment,unComment,auth})  => {
+const CommentItem = ({articleId,comment,unComment,auth})  => {
   const {_id,text,commentby,commentAt} = comment
 
   
