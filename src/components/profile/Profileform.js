@@ -1,10 +1,29 @@
-import React,{useState} from 'react'
+import React,{useState,useEffect} from 'react';
+import updateProfile from '../../actions/profileActions';
+import {connect} from 'react-redux';
 
 
- const Profileform = () => {
+ const Profileform = ({updateProfile}) => {
+   useEffect(()=>{
+       if(current !==null){
+       setProfile(current)
+       }else{
+       setProfile({
+          photo: '',
+          bio: '',
+          skills: '',
+          facebook:'',
+          twitter: '',
+          github: '',
+          instagram:''
+       
+       })
+       }
+   
+   },[current])
    
   const [profile,setProfile] = useState({
-    
+    photo: '',
     bio: '',
     skills: '',
     facebook:'',
@@ -13,16 +32,41 @@ import React,{useState} from 'react'
     instagram:''
   })
 
-  const {bio,skills,facebook,twitter,github,instagram} = profile
+  const {photo,bio,skills,facebook,twitter,github,instagram} = profile
 
-  const onChange = e => setProfile({...profile,[e.target.name]: e.target.value})
+  const onChange = e => setProfile({...profile,[e.target.name]: e.target.value});
+  
+  const  onSubmit = e =>{
+      e.preventDefault();
+       
+    if (bio.length !===12){
+    setAlert('Bio Should be 12 charactors')
+    }
+    
+     else{
+    
+    const formData ={
+         photo,
+         bio,
+         skills,
+         facebook,
+         twitter,
+         github,
+         instagram
+    }
+        
+      register(formData)
+    
+    }      
+  
+  }
   return (
-    <div className='/*form-container*/'>
+    <div className='card-panel'>
 
 
 
-    <h2>Create Profile</h2>
-    <form /*onSubmit={onSubmit} */ >
+    <h3>{current ? Update Profile:Create Profile</h3>
+    <form onSubmit={onSubmit}  >
         <i className="large material-icons">add_a_photo
 </i>
 
@@ -50,14 +94,24 @@ import React,{useState} from 'react'
             <label htmlFor="twitter">Confirm Password</label>
             <input type="password" name="twitter" value={twitter} placeholder='Twitter Link' onChange={onChange} minLength="6" />
         </div>
-        <input type="submit" value="Create" className="btn btn-success block" />
+        <input type="submit" value={current ? Update:Create} className="btn btn-success block" />
     </form>
 </div>
 
   )
 }
 
-export default Profileform;
+profileForm.propTypes= {
+     updateProfile: propTypes.func.isRequired,
+     
+}
+const mapStateToProps = state =>({
+  
+   current: state.current
+
+})
+
+export default connect(mapStateToProps,{updateProfile}) (Profileform);
 
 
 

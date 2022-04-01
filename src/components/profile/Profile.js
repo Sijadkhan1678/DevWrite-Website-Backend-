@@ -4,12 +4,13 @@
  //import avatar from '../'
  import {connect} from 'react-redux'
  import  {Link} from 'react-router-dom'
+ import {setCurrent} from '../../actions/articleActions'
  
  
- const Profile = ({profile,articles,auth}) => {
+ const Profile = ({current,profile,articles,auth}) => {
    const {isAuthenticated,user}=auth
    
-   const {_id,photo,name,skills,bio,facebook,twitter,github,instagram} = profile
+   const {_id,photo,name,skills,bio,facebook,twitter,github,instagram} = profile;
    
    return ( 
     
@@ -20,7 +21,7 @@
   <img src={photo ? photo:avatar} alt="Profile" className="round-img"/>
    <h3>{name}</h3>
    
-{isAuthenticated && _id === user._id   &&( <Link to='/profileform' className='btn btn-dark my-1' >Edit Profile</Link>) }
+{isAuthenticated && _id === user._id   &&( <Link to='/profileform' onClick={setCurrent(profile)} className='btn btn-dark my-1' >Edit Profile</Link>) }
      </div>
      <div>
   { bio && (
@@ -67,6 +68,7 @@
  
  const mapStateToProps = state => ({
    profile: state.profile,
-   articles: state.profileArticle
+   articles: state.profileArticle,
+   current : state.current
  })
  export default connect(mapStateToProps) (Profile);
