@@ -19,6 +19,8 @@ export const  getArticles = () => async  dispatch => {
          type : GET_ARTICLES,
          payload : res.data
        })
+       
+       setLoading()
      }
      
      catch(err){
@@ -44,6 +46,8 @@ export const getArticle = (id) => async dispatch => {
          payload : res.data
          
        })
+       
+       setLoading()
        
       }
       catch(err){

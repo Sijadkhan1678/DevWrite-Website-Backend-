@@ -29,6 +29,7 @@ export const getProfile = () => async dispatch => {
       type : GET_PROFILE,
       payload : res.data
     })
+    setLoading
   }
   catch(err){
     dispatch({
