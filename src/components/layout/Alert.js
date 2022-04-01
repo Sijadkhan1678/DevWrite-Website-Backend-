@@ -8,7 +8,7 @@ import propTypes from 'prop-types';
   return (
 alerts.length > 0 && (
   alerts.map(alert => (<div key={alert.id} className={`alert alert-${alert.type}`}>
-  <i className='fa fa-info-circle'/>  {alert.msg}
+  <i className=''> </i>  {alert.msg}
     </div>)) )
   )
 }
