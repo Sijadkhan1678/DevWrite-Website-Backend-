@@ -3,12 +3,18 @@ import React,{useEffect} from "react";
 import {getArticle} from '../../actions/articleActions';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
-import {Link} from 'react-router-dom'
+import {Link} from 'react-router-dom';
+import CommentForm from './CommentForm';
+import CommentItem from './CommentItem'
 
 const Article = ({article,getArticle}) => {
-const { author,avatar,title,description,comments, match} = article
+
+const {_id, author,avatar,title,description,comments, match} = article
+
 useEffect(()=>{
-  getArticle(match.params._id)
+
+  getArticle(match.params._id);
+  
 },[])
   
     return (
@@ -35,7 +41,8 @@ useEffect(()=>{
     </p>
     </pre>           
                   
-
+    <CommentForm id={_id}/>
+    comments.map(comment => <CommentItem key={comment._id} comment={comment} /> )
       </div>
     );
   
