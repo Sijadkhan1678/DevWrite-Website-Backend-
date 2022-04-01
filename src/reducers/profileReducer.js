@@ -1,22 +1,22 @@
 import {GET_PROFILE,UPDATE_PROFILE,SET_CURRENT,CLEAR_CURRENT} 
  from '../actions/types';
 
-const intialState = {
+const initialState = {
     profile: null,
-    ProfileArticle : null,
+    profileArticle : null,
     error : null,
     current_profile : null
 }
 
-export default (state=intialState,action) => {
+export default (state=initialState,action) => {
     switch (action.type) {
       
         
         case GET_PROFILE:
         return {
        ...state,
-       Profile: action.payload.profile,
-       ProfileArticle: action.paylod.articles
+       profile: action.payload.profile,
+       profileArticle: action.paylod.articles
             
         }
         
@@ -24,7 +24,7 @@ export default (state=intialState,action) => {
         case UPDATE_PROFILE:
             return {
           ...state,
-          profile : [...profile,action.payload]
+          profile : action.payload
           
             }
             
@@ -42,6 +42,6 @@ export default (state=intialState,action) => {
           
         
         default:
-            state
+         return   state
     }
 }
