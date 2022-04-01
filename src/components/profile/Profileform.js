@@ -3,7 +3,7 @@ import updateProfile from '../../actions/profileActions';
 import {connect} from 'react-redux';
 
 
- const Profileform = ({updateProfile}) => {
+ const ProfileForm = ({current,updateProfile}) => {
    useEffect(()=>{
        if(current !==null){
        setProfile(current)
@@ -37,9 +37,10 @@ import {connect} from 'react-redux';
   const onChange = e => setProfile({...profile,[e.target.name]: e.target.value});
   
   const  onSubmit = e =>{
+  
       e.preventDefault();
        
-    if (bio.length !===12){
+    if (bio.length !==12){
     setAlert('Bio Should be 12 charactors')
     }
     
@@ -55,17 +56,17 @@ import {connect} from 'react-redux';
          instagram
     }
         
-      register(formData)
+      updateProfile(formData)
     
     }      
   
   }
   return (
+  
     <div className='card-panel'>
 
 
-
-    <h3>{current ? Update Profile:Create Profile</h3>
+    <h3>{current ? 'Update Profile':'Create Profile'}</h3>
     <form onSubmit={onSubmit}  >
         <i className="large material-icons">add_a_photo
 </i>
@@ -94,7 +95,7 @@ import {connect} from 'react-redux';
             <label htmlFor="twitter">Confirm Password</label>
             <input type="password" name="twitter" value={twitter} placeholder='Twitter Link' onChange={onChange} minLength="6" />
         </div>
-        <input type="submit" value={current ? Update:Create} className="btn btn-success block" />
+        <input type="submit" value={current ? 'Update profile':'Create profile'} className="btn btn-success block" />
     </form>
 </div>
 
@@ -103,6 +104,7 @@ import {connect} from 'react-redux';
 
 profileForm.propTypes= {
      updateProfile: propTypes.func.isRequired,
+     current: propTypes.object.isRequired
      
 }
 const mapStateToProps = state =>({
@@ -111,7 +113,7 @@ const mapStateToProps = state =>({
 
 })
 
-export default connect(mapStateToProps,{updateProfile}) (Profileform);
+export default connect(mapStateToProps,{updateProfile}) (ProfileForm);
 
 
 

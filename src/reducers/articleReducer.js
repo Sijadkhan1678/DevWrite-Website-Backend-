@@ -82,6 +82,12 @@ export default  (state=initialState,action) =>{
            ...state,
            article : {...state.article,likes: state.article.likes.map(like=> like.id !== action.payload)}
           }
+     case ARTICLE_ERROR:
+          COMMENT_ERROR:
+       return{
+           ...state,
+           error: action.payload
+       }     
     case LOADING:
       return {
         ...state,
