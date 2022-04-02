@@ -32,8 +32,7 @@ const CommentItem = ({articleId,comment,unComment,auth})  => {
       {auth.user_id === commentby._id && (
     <i onClick={ unComment(_id,articleId)} className='material-icons red-text'>delete</i>
       )}
-                  
-                  
+                                  
                  </div>
                  </div>
                  </div>

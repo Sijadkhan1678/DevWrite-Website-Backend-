@@ -12,7 +12,7 @@ import Register from './components/auth/Register';
 import Alert from './components/layout/Alert'
 import Profileform from './components/profile/Profileform';
 import Profile  from './components/profile/Profile'
-import ArticleItem from './components/profile/ArticleItem';
+import Article from './components/article/article';
 
 const App= ()=> {
   useEffect(() => {
@@ -30,12 +30,12 @@ const App= ()=> {
       
       <div className='container'>
       <Switch>
-      <Route  exact path='/home'      component={Home}/>
+      <Route  exact path='/Home'      component={Home}/>
       <Route  exact path='/login'     component={Login}/>
       <Route  exact path='/register'  component={Register}/>
-      <Route exact path='/profileform'  component={Profileform}/>
-      <Route exact path='/profile'  component={Profile}/>
-      <Route exact path='/article'   component = {ArticleItem} />
+       <Route exact path='/profile'  component={Profile}/>
+      <Route exact path='/profile/profileform'  component={Profileform}/> 
+      <Route exact path='/article/:id'   component = {Article} />
       </Switch>
         
        </div>

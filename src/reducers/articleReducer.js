@@ -75,15 +75,15 @@ export default  (state=initialState,action) =>{
     case LIKE_ARTICLE:
           return{
             ...state,
-            article: action.payload
+            articles: state.articles.map(article=> article._id === action.payload._id ? action.payload: artcile)
           }
     case UNLIKE_ARTICLE:
           return {
            ...state,
-           article : {...state.article,likes: state.article.likes.map(like=> like.id !== action.payload)}
+           articles : state.articles.map(article=> article._id === action.payload._id ? action.payload: article)
           }
      case ARTICLE_ERROR:
-          COMMENT_ERROR:
+     case COMMENT_ERROR:
        return{
            ...state,
            error: action.payload
