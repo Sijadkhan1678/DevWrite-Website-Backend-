@@ -18,8 +18,9 @@
  
  /* profile types */
  
- export const GET_PROFILE= 'GET_PROFILE'
- export const UPDATE_PROFILE = 'UPDATE_PROFILE'
+ export const GET_PROFILE= 'GET_PROFILE';
+ export const UPDATE_PROFILE = 'UPDATE_PROFILE';
+ export const PROFILE_ERROR = 'PROFILE_ERROR'
  
  /* Article Types */
 
@@ -36,6 +37,7 @@ export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 
 export const POST_COMMENT = 'POST_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
+export const COMMENT_ERROR = 'COMMENT_ERROR'
 
 /* TYPES for LIKE */
 

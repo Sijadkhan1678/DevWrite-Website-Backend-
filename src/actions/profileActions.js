@@ -1,5 +1,5 @@
 import {GET_PROFILE,UPDATE_PROFILE,
-        LOADING,SET_CURRENT,CLEAR_CUREENT
+        LOADING,SET_CURRENT,CLEAR_CURRENT,PROFILE_ERROR
 }  from './types';
 import axios from 'axios';
 
@@ -13,6 +13,7 @@ try {
       type: GET_PROFILE,
       payload: res.data
     })
+    setLoading()
   }
 
 catch(err){
@@ -29,12 +30,12 @@ export const getProfile = () => async dispatch => {
       type : GET_PROFILE,
       payload : res.data
     })
-    setLoading
+    setLoading()
   }
   catch(err){
     dispatch({
       type :PROFILE_ERROR,
-      payload: res.response.data.msg
+      payload: err.response.data.msg
     })
   }
 }
@@ -59,6 +60,7 @@ export const updateProfile = profile => async dispatch => {
     payload:res.data
     
   })
+  setLoading();
   }
   
   catch(err){
@@ -76,7 +78,7 @@ export const setProfile = profile => {
 
 export const clearProfile = () => {
   return {
-    type : CLEAR_CUREENT
+    type : CLEAR_CURRENT
   }
 }
 

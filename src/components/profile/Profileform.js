@@ -1,7 +1,8 @@
 import React,{useState,useEffect} from 'react';
-import updateProfile from '../../actions/profileActions';
+import {updateProfile} from '../../actions/profileActions';
+import {setAlert} from '../../actions/alertActions'
 import {connect} from 'react-redux';
-
+import propTypes from 'prop-types'
 
  const ProfileForm = ({current,updateProfile}) => {
    useEffect(()=>{
@@ -102,7 +103,7 @@ import {connect} from 'react-redux';
   )
 }
 
-profileForm.propTypes= {
+ProfileForm.propTypes= {
      updateProfile: propTypes.func.isRequired,
      current: propTypes.object.isRequired
      
