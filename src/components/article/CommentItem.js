@@ -9,9 +9,9 @@ const CommentItem = ({articleId,comment,unComment,auth})  => {
   const {_id,text,commentby,commentAt} = comment
 
   
-  const onDelete = (articleId,_id) => {
+  
    unComment(_id,articleId)
-}
+
 
   return(
     <Fragment>
@@ -30,7 +30,7 @@ const CommentItem = ({articleId,comment,unComment,auth})  => {
                   </div>
                   <div className='card-action'>
       {auth.user_id === commentby._id && (
-    <i onClick={onDelete(articleId,_id)} className='material-icons red-text'>delete</i>
+    <i onClick={ unComment(_id,articleId)} className='material-icons red-text'>delete</i>
       )}
                   
                   

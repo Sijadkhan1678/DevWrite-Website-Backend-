@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Comment } from '../../actions/articleActions';
+import { comment } from '../../actions/articleActions';
 import  {setAlert} from '../../actions/alertActions'
 import {Redirect} from 'react-router-dom'
   
@@ -10,7 +10,7 @@ import {Redirect} from 'react-router-dom'
 
 const CommentForm = ({comment,auth:{isAuthenticated} }) => {
   
-    const [comment, seComment] = useState('');
+    const [comment, setComment] = useState('');
     const onSubmit = () => {
       if(comment ==='' ){
     setAlert('comment should not be empty','danger')
