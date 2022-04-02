@@ -30,7 +30,7 @@ const CommentItem = ({articleId,comment,unComment,auth})  => {
                   </div>
                   <div className='card-action'>
       {auth.user_id === commentby._id && (
-    <i onClick={onDelete} className='material-icons red-text'>delete</i>
+    <i onClick={onDelete(articleId,_id)} className='material-icons red-text'>delete</i>
       )}
                   
                   
@@ -44,10 +44,10 @@ const CommentItem = ({articleId,comment,unComment,auth})  => {
 }
 
 CommentItem.propTypes = {
-  articleId: PropTypes.string.isRequired,
-  comment: PropTypes.object.isRequired,
-  auth: PropTypes.object.isRequired,
-  unComment: PropTypes.func.isRequired
+  articleId: propTypes.string.isRequired,
+  comment: propTypes.object.isRequired,
+  auth: propTypes.object.isRequired,
+  unComment: propTypes.func.isRequired
 };
 
 const mapStateToProps = state => ({
