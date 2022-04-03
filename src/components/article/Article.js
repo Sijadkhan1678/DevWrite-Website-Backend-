@@ -7,9 +7,9 @@ import {Link} from 'react-router-dom';
 import CommentForm from './CommentForm';
 import CommentItem from './CommentItem'
 
-const Article = ({article,getArticle}) => {
+const Article = ({article,getArticle,match}) => {
 
-const {_id, author,avatar,title,description,comments, match} = article
+const {_id, author,avatar,title,description,comments} = article
 
 useEffect(()=>{
 
@@ -42,7 +42,7 @@ useEffect(()=>{
     </pre>           
                   
     <CommentForm id={_id}/>
-    comments.map(comment => <CommentItem key={comment._id} articleId={_id} comment={comment} /> )
+   { comments.map(comment => <CommentItem key={comment._id} articleId={_id} comment={comment} /> )}
       </div>
     );
   

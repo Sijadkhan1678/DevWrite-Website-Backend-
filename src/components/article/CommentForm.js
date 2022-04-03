@@ -10,9 +10,9 @@ import {Redirect} from 'react-router-dom'
 
 const CommentForm = ({comment,auth:{isAuthenticated} }) => {
   
-    const [comment, setComment] = useState('');
+    const [text, setText] = useState('');
     const onSubmit = () => {
-      if(comment ==='' ){
+      if(text ==='' ){
     setAlert('comment should not be empty','danger')
   }else{
     isAuthenticated ? comment(comment) : <Redirect to='/register'/>
@@ -30,7 +30,7 @@ const CommentForm = ({comment,auth:{isAuthenticated} }) => {
                 rows='5'
                 placeholder='Write something here'
                 value={comment}
-                onChange={e => setComment(e.target.value)}
+                onChange={e => setText(e.target.value)}
                 required
               />
       </div>

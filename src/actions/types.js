@@ -29,7 +29,7 @@ export const GET_ARTICLES = 'GET_ARTICLES';
 export const GET_ARTICLE = 'GET_ARTICLE';
 export const UPDATE_ARTICLE = 'UPDATE_ARTICLE';
 export const DELETE_ARTICLE = 'DELETE_ARTICLE';
-export const ARTICLE_ERROR = 'ARTICLE-ERROR'
+export const ARTICLE_ERROR = 'ARTICLE_ERROR'
 export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';
 

@@ -10,12 +10,12 @@ import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
-import SetAuthToken from './utils/setAuthToken';
-import PrivateRoute from './components/routing/Private'
-import Profileform from './components/profile/Profileform';
+import setAuthToken from './utils/setAuthToken';
+import PrivateRoute from './components/routing/PrivateRoute'
+import ProfileForm from './components/profile/Profileform';
 import ArticleForm from './components/article/ArticleForm';
 import Profile  from './components/profile/Profile';
-import Article from './components/article/article';
+import Article from './components/article/Article';
 
 const App= ()=> {
   useEffect(() => {

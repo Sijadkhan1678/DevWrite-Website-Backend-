@@ -1,6 +1,5 @@
 import React,{useEffect} from 'react';
-import ArticleItem from './ArticleItem';
-import {like,unlike} from '../../actions/article';
+import {like,unLike} from '../../actions/articleActions';
 import {Redirect,Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
@@ -11,7 +10,7 @@ const {_id,title,avatar,likes,comments} = article
 const {isAuthenticated,user} = auth;
 const isLike = user => {
   if(isAuthenticated ){
-    likes.includes(user._id) === true  ? like(user._id) : unlike(user._id)
+    likes.includes(user._id) === true  ? like(user._id) : unLike(user._id)
     
   }else {
     <Redirect to='/register' />
@@ -73,4 +72,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps,{like,unlike})(ArticleItem);
+export default connect(mapStateToProps,{like,unLike})(ArticleItem);

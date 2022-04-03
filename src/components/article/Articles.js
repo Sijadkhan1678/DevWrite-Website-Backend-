@@ -1,10 +1,11 @@
 import React,{Fragment,useEffect} from 'react';
 import ArticleItem from './ArticleItem'
 import {getArticles} from '../../actions/articleActions';
+import {connect} from 'react-redux'
 import Preloader from '../layout/Preloader';
 import propTypes from 'prop-types'
 
-const Articles = ({Articles,getArticles}) => {
+const Articles = ({articles,getArticles}) => {
  
  useEffect(()=>{
    getArticles()
@@ -14,7 +15,7 @@ const Articles = ({Articles,getArticles}) => {
   return (
     <Fragment>
     {
-    loading && article==null ? <Preloader/>:
+    loading && articles==null ? <Preloader/>:
     articles.map(article => <ArticleItem key={article._id} article={article}/>)
       
     }
@@ -33,7 +34,7 @@ Articles.propTypes={
   loading : propTypes.bool.isRequired
 }
 const mapStateToProps = state => ({
-  articles: state.articles,
+  articles: state.articles.articles,
   loading: state.loading
 })
 

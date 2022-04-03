@@ -1,10 +1,17 @@
-import React from "react";
+import React,{Fragment} from "react";
 import { Link } from "react-router-dom";
-import {connect} from 'react-redux'
+import {connect} from 'react-redux';
+import {logOut} from '../../actions/authActions'
+import propTypes from 'prop-types'
+
 
 
 const Navbar = ({auth}) =>{
   const {isAuthenticated,user} =auth
+  const onLogout = () =>{
+
+    logOut()
+  }
    const authLinks = (
         <Fragment>
             <li>
@@ -48,9 +55,9 @@ const Navbar = ({auth}) =>{
 Navbar.propTypes={
   auth: propTypes.object.isRequired
 }
-const  mapStateToProps = state =>{
+const  mapStateToProps = state =>({
  auth: state.auth
  
-}
+})
 
-export default connect(mapStateToProps,null)(Navbar);
+export default connect(mapStateToProps,{logOut})(Navbar);

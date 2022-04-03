@@ -110,7 +110,7 @@ ProfileForm.propTypes= {
 }
 const mapStateToProps = state =>({
   
-   current: state.current
+   current: state.article.current
 
 })
 

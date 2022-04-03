@@ -3,7 +3,8 @@ import {  GET_ARTICLES, GET_ARTICLE,
           DELETE_ARTICLE, POST_COMMENT,
           DELETE_COMMENT, LIKE_ARTICLE,
           UNLIKE_ARTICLE, COMMENT_ERROR,
-          LOADING, SET_CURRENT,CLEAR_CURRENT
+          LOADING, SET_CURRENT,CLEAR_CURRENT,
+          ARTICLE_ERROR
 
 } from '../actions/types';
 
@@ -75,7 +76,7 @@ export default  (state=initialState,action) =>{
     case LIKE_ARTICLE:
           return{
             ...state,
-            articles: state.articles.map(article=> article._id === action.payload._id ? action.payload: artcile)
+            articles: state.articles.map(article=> article._id === action.payload._id ? action.payload: article)
           }
     case UNLIKE_ARTICLE:
           return {
