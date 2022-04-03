@@ -106,7 +106,7 @@ const mapStateToProps = state =>({
 })
 
 
-export default connect(mapStateToProps,{postArticle,updateArticle})(Profileform);
+export default connect(mapStateToProps,{postArticle,updateArticle})(ArticleForm);
 
 
 
