@@ -9,13 +9,19 @@ import Home from './components/pages/Home'
 import Navbar from './components/layout/Navbar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
-import Alert from './components/layout/Alert'
+import Alert from './components/layout/Alert';
+import SetAuthToken from './utils/setAuthToken';
+import PrivateRoute from './components/routing/Private'
 import Profileform from './components/profile/Profileform';
-import Profile  from './components/profile/Profile'
+import ArticleForm from './components/article/ArticleForm';
+import Profile  from './components/profile/Profile';
 import Article from './components/article/article';
 
 const App= ()=> {
   useEffect(() => {
+  if(localStorage.token){
+  setAuthToken(localStorage.token);
+  }
     M.AutoInit();
   }, []);
 
@@ -35,6 +41,7 @@ const App= ()=> {
       <Route  exact path='/register'  component={Register}/>
        <Route exact path='/profile'  component={Profile}/>
       <Route exact path='/profile/profileform'  component={Profileform}/> 
+      <Route exact path='/articles/article/articleForm' component={ArticleForm} />
       <Route exact path='/article/:id'   component = {Article} />
       </Switch>
         

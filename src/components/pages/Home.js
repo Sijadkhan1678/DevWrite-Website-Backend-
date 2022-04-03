@@ -1,6 +1,6 @@
 
 import React,{Fragment} from 'react';
-import Articles from '../articles/articles'
+import Articles from '../article/articles'
 
 const Home = () =>{
 

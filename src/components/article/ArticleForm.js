@@ -1,11 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import propTypes from 'prop-types'
 import {connect} from 'react-redux'
-import {updateArticle,postAticle,clearCurrent} from '../../actions/articleActions';
+import {updateArticle,postArticle} from '../../actions/articleActions';
 
 
 
- const ArticleForm = ({current,clearCurrent,history,postAticle,updateArticle}) => {
+ const ArticleForm = ({current,history,postArticle,updateArticle}) => {
    
    useEffect(()=>{
      if(current !== null){
@@ -95,7 +95,7 @@ ArticleForm.propTypes={
   current: propTypes.object.isRequired,
   postArticle: propTypes.func.isRequired,
   updateArticle: propTypes.func.isRequired,
-  clearCurrent: propTypes.func.isRequired
+  
 }
 
 const mapStateToProps = state =>({
@@ -106,7 +106,7 @@ const mapStateToProps = state =>({
 })
 
 
-export default connect(mapStateToProps,{postAticle,updateArticle,clearCurrent})(Profileform);
+export default connect(mapStateToProps,{postArticle,updateArticle})(Profileform);
 
 
 
