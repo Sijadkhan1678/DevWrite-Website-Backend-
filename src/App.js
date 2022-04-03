@@ -39,10 +39,10 @@ const App= ()=> {
       <Route  exact path='/Home'      component={Home}/>
       <Route  exact path='/login'     component={Login}/>
       <Route  exact path='/register'  component={Register}/>
-       <Route exact path='/profile'  component={Profile}/>
-      <Route exact path='/profile/profileform'  component={Profileform}/> 
-      <Route exact path='/articles/article/articleForm' component={ArticleForm} />
-      <Route exact path='/article/:id'   component = {Article} />
+       <Route exact path='/profile/:id'  component={Profile}/>
+      <Route exact path='/profile/profileform'  component={ProfileForm}/> 
+      <Route exact path='/articles/article/articleform'  component={ArticleForm} />
+      <Route exact path='/articles/article/:id'   component = {Article} />
       </Switch>
         
        </div>

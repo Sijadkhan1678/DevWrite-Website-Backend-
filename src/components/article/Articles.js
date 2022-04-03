@@ -2,6 +2,7 @@ import React,{Fragment,useEffect} from 'react';
 import ArticleItem from './ArticleItem'
 import {getArticles} from '../../actions/articleActions';
 import Preloader from '../layout/Preloader';
+import propTypes from 'prop-types'
 
 const Articles = ({Articles,getArticles}) => {
  

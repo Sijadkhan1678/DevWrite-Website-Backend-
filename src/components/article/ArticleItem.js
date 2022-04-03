@@ -26,7 +26,7 @@ const isLike = user => {
   <div class="col s9 m4">
      
     <div class="card">
-    <Link to={`/article/${_id}`}>
+    <Link to={`/articles/article/${_id}`}>
       <div className='card-image'>
         <img src={avatar}/>
         

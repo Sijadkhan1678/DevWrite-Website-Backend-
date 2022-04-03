@@ -19,7 +19,7 @@ useEffect(()=>{
   
     return (
       <div className='card-panel'>
-      <Link > 
+      <Link to={`profile/${author._id}`}> 
           <div className="col s12 m9 l10">
             <div className="card horizontal">
               <div class="card-image">
