@@ -67,8 +67,8 @@ return (
     <h2>{current !==null ? 'Update Article':'Create Article'}</h2>
     <form onSubmit={onSubmit}>
     <label htmlFor='avatar'>
-avatar ?  <i className="large material-icons">add_a_photo
-        </i> : <img src={avatar} className='responsive-img round-img'/>
+avatar ? ( <i className="large material-icons">)add_a_photo
+        (</i> : <img src={avatar} className='responsive-img round-img'/>)
 
    </label>
       <input type='file' className='hide'  onChange={onChange}/>
