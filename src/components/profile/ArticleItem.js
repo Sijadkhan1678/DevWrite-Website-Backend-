@@ -1,5 +1,5 @@
 import React,{useEffect,Fragment} from 'react';
-import {like,unlike,setCurrent} from '../../actions/articleActions';
+import {like,unLike,setCurrent,deleteArticle,updateArticle} from '../../actions/articleActions';
 import {Redirect,Link} from 'react-router-dom';
 import {connect} from 'react-redux';
 import propTypes from 'prop-types';
@@ -10,7 +10,7 @@ const {_id,title,avatar,likes,comments,author} = article
 const {isAuthenticated,user} = auth;
 const isLike = user => {
   if(isAuthenticated ){
-    likes.includes(user._id) !== true  ? like(user._id) : unlike(user._id)
+    likes.includes(user._id) !== true  ? like(user._id) : unLike(user._id)
     
   }else {
     <Redirect to='/register' />
@@ -87,7 +87,7 @@ ArticleItem.propTypes = {
   auth: propTypes.object.isRequired,
   article: propTypes.object.isRequired,
   like: propTypes.object.isRequired,
-  unlike: propTypes.object.isRequired,
+  unLike: propTypes.object.isRequired,
   setCurrent: propTypes.func.isRequired,
   deleteArticle: propTypes.func.isRequired
 
@@ -99,4 +99,4 @@ const mapStateToProps = state => ({
 })
 
 
-export default connect(mapStateToProps,{like,unlike,setCurrent,deleteArticle})(ArticleItem);
+export default connect(mapStateToProps,{like,unLike,setCurrent,deleteArticle,updateArticle})(ArticleItem);

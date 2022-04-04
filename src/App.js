@@ -12,7 +12,7 @@ import Register from './components/auth/Register';
 import Alert from './components/layout/Alert';
 import setAuthToken from './utils/setAuthToken';
 import PrivateRoute from './components/routing/PrivateRoute'
-import ProfileForm from './components/profile/Profileform';
+import ProfileForm from './components/profile/ProfileForm';
 import ArticleForm from './components/article/ArticleForm';
 import Profile  from './components/profile/Profile';
 import Article from './components/article/Article';
@@ -40,7 +40,7 @@ const App= ()=> {
       <Route  exact path='/login'     component={Login}/>
       <Route  exact path='/register'  component={Register}/>
        <Route exact path='/profile/:id'  component={Profile}/>
-      <Route exact path='/profile/profileform'  component={ProfileForm}/> 
+      <Route exact path='/profileform'  component={ProfileForm}/> 
       <Route exact path='/articles/article/articleform'  component={ArticleForm} />
       <Route exact path='/articles/article/:id'   component = {Article} />
       </Switch>

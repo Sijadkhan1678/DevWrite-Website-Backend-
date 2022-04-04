@@ -4,10 +4,10 @@ import {setAlert} from '../../actions/alertActions'
 import {connect} from 'react-redux';
 import propTypes from 'prop-types'
 
- const ProfileForm = ({profile:{currentProfile},updateProfile}) => {
+ const ProfileForm = ({article:{current},updateProfile}) => {
    useEffect(()=>{
-       if(currentProfile !==null){
-       setProfile(currentProfile)
+       if(current !==null){
+       setProfile(current)
        }else{
        setProfile({
           photo: '',
@@ -110,7 +110,7 @@ ProfileForm.propTypes= {
 }
 const mapStateToProps = state =>({
   
-   profile: state.profile
+   article: state.article
 
 })
 

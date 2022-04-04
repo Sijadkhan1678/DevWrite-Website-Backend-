@@ -3,9 +3,9 @@ import {GET_PROFILE,UPDATE_PROFILE,SET_CURRENT,CLEAR_CURRENT}
 
 const initialState = {
     profile: null,
-    profileArticle : null,
+    profileArticles : null,
     error : null,
-    current_profile : null
+    currentProfile : null
 }
 
 export default (state=initialState,action) => {

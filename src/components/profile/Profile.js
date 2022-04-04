@@ -1,16 +1,17 @@
 
 
  import React, { Fragment} from 'react';
- //import avatar from '../'
- import {connect} from 'react-redux'
- import  {Link} from 'react-router-dom'
- import {setCurrent} from '../../actions/articleActions'
+ import avatar from '../../images/profile.png'
+ import {connect} from 'react-redux';
+ import  {Link} from 'react-router-dom';
+ import {setProfile} from '../../actions/profileActions';
+ import ArticleItem from './ArticleItem'
+ import propTypes from 'prop-types'
  
- 
- const Profile = ({current,profile,articles,auth}) => {
+ const Profile = ({profile:{profile,profileArticles},auth}) => {
    const {isAuthenticated,user}=auth
    
-   const {_id,photo,name,skills,bio,facebook,twitter,github,instagram} = profile;
+   const {_id,photo,name,/*skills*/bio,facebook,twitter,github,instagram} = profile;
    
    return ( 
     
@@ -18,10 +19,10 @@
      <div classNam='card grid-2'>
      <div classNam= 'all-center'>
      
-  <img src={photo ? photo:avatar} alt="Profile" className="round-img"/>
+  <img src={photo ? photo:avatar} alt="Profile" className="responsive-img round-img"/>
    <h3>{name}</h3>
    
-{isAuthenticated && _id === user._id   &&( <Link to='/profileform' onClick={setCurrent(profile)} className='btn btn-dark my-1' >Edit Profile</Link>) }
+{isAuthenticated && _id === user._id   &&( <Link to='/profileform' onClick={setProfile(profile)} className='btn btn-dark my-1' >Edit Profile</Link>) }
      </div>
      <div>
   { bio && (
@@ -40,25 +41,27 @@
                     
  <div className="badge badge-danger">
  {facebook &&(
-   <a href={facebook}> <i className='material-icons'> </i></a>
+   <a href={facebook}> <i className='material-icons'> facebook</i></a>
  )}
  </div>
 <div className="badge badge-success">
  {twitter &&(
-   <a href={twitter}> <i className='material-icons'> </i></a>
+   <a href={twitter}> <i className='material-icons'> twitter</i></a>
  )}
 </div>
  <div className="badge badge-light">
   {github &&(
-   <a href={github}> <i className='material-icons'> </i></a>
+   <a href={github}> <i className='material-icons'>github</i></a>
  )}
  </div>
 <div className="badge badge-dark">
  {instagram &&(
-   <a href={instagram}> <i className='material-icons'> </i></a>
+   <a href={instagram}> <i className='material-icons'>instagram </i></a>
  )}
 </div>
   </div>
+     
+    { profileArticles.map(article=> <ArticleItem key={article._id}  article={article} />)}
      
      
      </Fragment>
@@ -66,9 +69,16 @@
    
  }
  
+ Profile.propTypes = {
+ profile : propTypes.object.isRequired,
+ auth: propTypes.object.isRequired,
+ setProfile : propTypes.func.isRequired
+ 
+ }
  const mapStateToProps = state => ({
    profile: state.profile,
-   articles: state.profileArticle,
-   current : state.current
+   auth: state.auth
+   
+
  })
- export default connect(mapStateToProps) (Profile);
+ export default connect(mapStateToProps,{setProfile}) (Profile);
