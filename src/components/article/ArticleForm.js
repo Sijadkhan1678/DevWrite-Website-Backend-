@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react'
 import propTypes from 'prop-types'
 import {connect} from 'react-redux'
 import {updateArticle,postArticle} from '../../actions/articleActions';
-
+import {setAlert} from '../../actions/alertActions'
 
 
  const ArticleForm = ({current,history,postArticle,updateArticle}) => {
@@ -31,7 +31,7 @@ import {updateArticle,postArticle} from '../../actions/articleActions';
   const {avatar,title,description,catagory} = article
 
   const onChange = e => setArticle({...article,[e.target.name]: e.target.value})
-  onSubmit
+  
   
 const onSubmit = e =>{
   e.preventDefault();

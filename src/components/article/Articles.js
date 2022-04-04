@@ -5,7 +5,7 @@ import {connect} from 'react-redux'
 import Preloader from '../layout/Preloader';
 import propTypes from 'prop-types'
 
-const Articles = ({articles,getArticles}) => {
+const Articles = ({articles:{articles,loading},getArticles}) => {
  
  useEffect(()=>{
    getArticles()
@@ -15,7 +15,7 @@ const Articles = ({articles,getArticles}) => {
   return (
     <Fragment>
     {
-    loading && articles==null ? <Preloader/>:
+    !loading && articles===null ? <Preloader/>:
     articles.map(article => <ArticleItem key={article._id} article={article}/>)
       
     }
@@ -31,11 +31,11 @@ const Articles = ({articles,getArticles}) => {
 Articles.propTypes={
   articles : propTypes.object.isRequired,
   getArticles: propTypes.func.isRequired,
-  loading : propTypes.bool.isRequired
+  loading : propTypes.bool
 }
 const mapStateToProps = state => ({
-  articles: state.articles.articles,
-  loading: state.loading
+  articles: state.articles
+  
 })
 
 export default connect(

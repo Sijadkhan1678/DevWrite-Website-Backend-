@@ -52,7 +52,7 @@ Article.propTypes= {
   article: propTypes.object.isRequired,
   getArticle: propTypes.func.isRequired
 }
-const mapStateToProps = state => ({
-    article: state.article
-  })
-export default connect(mapStateToProps,{getArticle}) (Article)
+///const mapStateToProps = state => ({
+  //  article: state.article
+  //})
+export default connect(null,{getArticle}) (Article)

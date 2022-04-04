@@ -27,7 +27,7 @@ export const  getArticles = () => async  dispatch => {
        
        dispatch({
          type : ARTICLE_ERROR,
-         payload: err.response.msg
+         payload: err.response.data.msg
        })
        
      }
