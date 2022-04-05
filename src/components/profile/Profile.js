@@ -9,9 +9,9 @@
  import propTypes from 'prop-types'
  
  const Profile = ({profile:{profile,profileArticles},auth}) => {
-   const {isAuthenticated,user}=auth
+   const {isAuthenticated}=auth
    
-   const {_id,photo,name,/*skills*/bio,facebook,twitter,github,instagram} = profile;
+   const {user,photo,name,/*skills*/bio,facebook,twitter,github,instagram} = profile;
    
    return ( 
     
@@ -22,7 +22,7 @@
   <img src={photo ? photo:avatar} alt="Profile" className="responsive-img round-img"/>
    <h3>{name}</h3>
    
-{isAuthenticated && _id === user._id   &&( <Link to='/profileform' onClick={setProfile(profile)} className='btn btn-dark my-1' >Edit Profile</Link>) }
+{isAuthenticated && auth.user._id === user._id   &&( <Link to='/profileform' onClick={setProfile(profile)} className='btn btn-dark my-1' >Edit Profile</Link>) }
      </div>
      <div>
   { bio && (

@@ -8,7 +8,7 @@ const Login = ({auth:{isAuthenticated,error},login,setAlert,history}) => {
   
 useEffect(()=>{
    if(isAuthenticated){
-     history.push('/home');
+     history.push('/Home');
    }
    if(error=== 'user with this email does not exist'){
 
@@ -37,8 +37,11 @@ const onSubmit = e =>{
     setAlert('please fill the login form','danger')
   } else {
     
-    
-    login({email,password});
+    const formData={
+      email,
+      password
+    }
+    login(formData);
   }
 
     
@@ -71,7 +74,7 @@ Login.propTypes = {
   
   login: propTypes.func.isRequired,
   setAlert: propTypes.func.isRequired,
-  auth : propTypes.object
+  auth : propTypes.object.isRequired
 }
 const mapStateToProps = state => ({
   auth : state.auth,

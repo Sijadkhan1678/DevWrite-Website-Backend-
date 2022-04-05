@@ -4,10 +4,10 @@ import {setAlert} from '../../actions/alertActions'
 import {connect} from 'react-redux';
 import propTypes from 'prop-types'
 
- const ProfileForm = ({article:{current},updateProfile}) => {
+ const ProfileForm = ({profile:{currentProfile},updateProfile}) => {
    useEffect(()=>{
-       if(current !==null){
-       setProfile(current)
+       if(currentProfile !==null){
+       setProfile(currentProfile)
        }else{
        setProfile({
           photo: '',
@@ -21,7 +21,7 @@ import propTypes from 'prop-types'
        })
        }
    
-   },[current])
+   },[currentProfile])
    
   const [profile,setProfile] = useState({
     photo: '',
@@ -67,8 +67,8 @@ import propTypes from 'prop-types'
     <div className='card-panel'>
 
 
-    <h3>{current ? 'Update Profile':'Create Profile'}</h3>
-    <form onSubmit={onSubmit}  >
+    <h3>{currentProfile ? 'Update Profile':'Create Profile'}</h3>
+    <form onSubmit={onSubmit} >
         <i className="large material-icons">add_a_photo
 </i>
 
@@ -96,7 +96,7 @@ import propTypes from 'prop-types'
             <label htmlFor="twitter">Confirm Password</label>
             <input type="password" name="twitter" value={twitter} placeholder='Twitter Link' onChange={onChange} minLength="6" />
         </div>
-        <input type="submit" value={current ? 'Update profile':'Create profile'} className="btn btn-success block" />
+        <input type="submit" value={currentProfile ? 'Update profile':'Create profile'} className="btn btn-success block" />
     </form>
 </div>
 
@@ -105,12 +105,12 @@ import propTypes from 'prop-types'
 
 ProfileForm.propTypes= {
      updateProfile: propTypes.func.isRequired,
-     current: propTypes.object.isRequired
+     
      
 }
 const mapStateToProps = state =>({
   
-   article: state.article
+   profile: state.profile
 
 })
 
