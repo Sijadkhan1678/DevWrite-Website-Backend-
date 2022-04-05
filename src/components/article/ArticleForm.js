@@ -5,7 +5,7 @@ import {updateArticle,postArticle} from '../../actions/articleActions';
 import {setAlert} from '../../actions/alertActions'
 
 
- const ArticleForm = ({current,history,postArticle,updateArticle}) => {
+ const ArticleForm = ({articles:{current},history,postArticle,updateArticle}) => {
    
    useEffect(()=>{
      if(current !== null){
@@ -67,11 +67,11 @@ return (
     <h2>{current !==null ? 'Update Article':'Create Article'}</h2>
     <form onSubmit={onSubmit}>
     <label htmlFor='avatar'>
-avatar ? ( <i className="large material-icons">)add_a_photo
-        (</i> : <img src={avatar} className='responsive-img round-img'/>)
+{!avatar ? ( <i className="large material-icons">add_a_photo
+        </i>) : (<img src={avatar} className='responsive-img round-img'/>) }
 
    </label>
-      <input type='file' className='hide'  onChange={onChange}/>
+      <input type='file' id='avatar' name='avatar' value={avatar} className='hide'  onChange={onChange}/>
    
 
         <div className="form-group">
@@ -92,21 +92,21 @@ avatar ? ( <i className="large material-icons">)add_a_photo
 }
 
 ArticleForm.propTypes={
-  current: propTypes.object.isRequired,
+  articles: propTypes.object.isRequired,
   postArticle: propTypes.func.isRequired,
   updateArticle: propTypes.func.isRequired,
   
 }
 
 const mapStateToProps = state =>({
-  current: state.current,
+  articles: state.articles,
 
   
   
 })
 
 
-export default connect(mapStateToProps,{postArticle,updateArticle})(ArticleForm);
+export default connect(mapStateToProps,{postArticle,updateArticle}) (ArticleForm);
 
 
 

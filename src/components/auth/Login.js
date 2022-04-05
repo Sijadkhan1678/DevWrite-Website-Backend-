@@ -8,7 +8,7 @@ const Login = ({auth:{isAuthenticated,error},login,setAlert,history}) => {
   
 useEffect(()=>{
    if(isAuthenticated){
-     history.push('/Home');
+     history.push('/profileform');
    }
    if(error=== 'user with this email does not exist'){
 

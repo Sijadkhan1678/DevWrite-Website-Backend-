@@ -4,7 +4,7 @@ import {setAlert} from '../../actions/alertActions'
 import {connect} from 'react-redux';
 import propTypes from 'prop-types'
 
- const ProfileForm = ({profile:{currentProfile},updateProfile}) => {
+ const ProfileForm = ({profile:{currentProfile},updateProfile,setAlert}) => {
    useEffect(()=>{
        if(currentProfile !==null){
        setProfile(currentProfile)
@@ -42,7 +42,7 @@ import propTypes from 'prop-types'
       e.preventDefault();
        
     if (bio.length !==12){
-    setAlert('Bio Should be 12 charactors')
+    setAlert('Bio Should be 12 charactors','danger')
     }
     
      else{
@@ -69,8 +69,13 @@ import propTypes from 'prop-types'
 
     <h3>{currentProfile ? 'Update Profile':'Create Profile'}</h3>
     <form onSubmit={onSubmit} >
-        <i className="large material-icons">add_a_photo
-</i>
+    <label htmlFor='photo'>
+{!photo ? ( <i className="large material-icons">add_a_photo
+        </i>) : (<img src={photo} className='responsive-img round-img'/>) }
+
+   </label>
+      <input type='file' id='photo' name='photo' value={photo} className='hide'  onChange={onChange}/>
+   
 
         <div className="form-group">
             <label htmlFor="name">bio</label>
@@ -114,7 +119,7 @@ const mapStateToProps = state =>({
 
 })
 
-export default connect(mapStateToProps,{updateProfile}) (ProfileForm);
+export default connect(mapStateToProps,{updateProfile,setAlert}) (ProfileForm);
 
 
 
