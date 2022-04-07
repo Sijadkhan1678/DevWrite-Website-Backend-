@@ -5,12 +5,14 @@ import {connect} from 'react-redux';
 import propTypes from 'prop-types'
 
  const ProfileForm = ({profile:{currentProfile},updateProfile,setAlert}) => {
+
    useEffect(()=>{
+
        if(currentProfile !==null){
        setProfile(currentProfile)
        }else{
        setProfile({
-          photo: '',
+          fileUrl: null,
           bio: '',
           skills: '',
           facebook:'',
@@ -19,12 +21,20 @@ import propTypes from 'prop-types'
           instagram:''
        
        })
+       
        }
+
+     
+ 
    
    },[currentProfile])
-   
+
+  const [file,setFile] = useState(null);
+  //const [photoUrl,setPhotoUrl] =useState('')
+
+
   const [profile,setProfile] = useState({
-    photo: '',
+    fileUrl: null,
     bio: '',
     skills: '',
     facebook:'',
@@ -32,23 +42,25 @@ import propTypes from 'prop-types'
     github: '',
     instagram:''
   })
-
-  const {photo,bio,skills,facebook,twitter,github,instagram} = profile
-
-  const onChange = e => setProfile({...profile,[e.target.name]: e.target.value});
   
-  const  onSubmit = e =>{
+  const {fileUrl,bio,skills,facebook,twitter,github,instagram} = profile
+  
+  const onChange = e => {
+
+    setProfile({...profile,[e.target.name]: e.target.value}) 
+    console.log(e.target.files[0])
+    setFile(e.target.files[0])
+  setProfile({...profile,fileUrl:URL.createObjectURL(e.target.files[0])}) 
+   
+};
+  
+   const  onSubmit = e =>{ 
   
       e.preventDefault();
        
-    if (bio.length !==12){
-    setAlert('Bio Should be 12 charactors','danger')
-    }
-    
-     else{
     
     const formData ={
-         photo,
+         file,
          bio,
          skills,
          facebook,
@@ -59,7 +71,7 @@ import propTypes from 'prop-types'
         
       updateProfile(formData)
     
-    }      
+     
   
   }
   return (
@@ -70,15 +82,15 @@ import propTypes from 'prop-types'
     <h3>{currentProfile ? 'Update Profile':'Create Profile'}</h3>
     <form onSubmit={onSubmit} >
     <label htmlFor='photo'>
-{!photo ? ( <i className="large material-icons">add_a_photo
-        </i>) : (<img src={photo} className='responsive-img round-img'/>) }
+{fileUrl===null ? ( <i className="large material-icons">add_a_photo
+        </i>) : (<img src={fileUrl} className='responsive-img round-img'   alt='file'/>) }
 
    </label>
-      <input type='file' id='photo' name='photo' value={photo} className='hide'  onChange={onChange}/>
+      <input type='file'  id='photo' name='photo' accept='images/*' className='hide'  onChange={onChange}/>
    
 
         <div className="form-group">
-            <label htmlFor="name">bio</label>
+             <label htmlFor="name">bio</label>
             <input type="text" name="bio" value={bio} placeholder='Write About Yourself' onChange={onChange} />
         </div>
         <div className="form-group">
